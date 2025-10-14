@@ -39,29 +39,31 @@ import '../style/global.css';
 
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   const sectionInicio = document.getElementById('Inicio');
   const menuItem = document.querySelector('.menu-item');
   const overlay = document.getElementById('overlay');
 
-  // Header visible según scroll, desaparece antes del 50%
-  if (sectionInicio) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        header.classList.toggle('visible', entry.intersectionRatio > 0.4);
-      },
-      { threshold: Array.from({ length: 101 }, (_, i) => i / 100) } // 0 a 1 en pasos de 0.01
-    );
+  // Header desaparece antes de la mitad de la sección
+  function toggleHeader() {
+    if (!sectionInicio) return;
 
-    observer.observe(sectionInicio);
+    const rect = sectionInicio.getBoundingClientRect();
+    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+    const visibleRatio = visibleHeight / rect.height;
+
+    // Ajusta 0.6 para decidir cuándo empieza a desaparecer
+    header.classList.toggle('visible', visibleRatio > 0.9);
   }
 
-  // Overlay del menú al hacer hover
+  window.addEventListener('scroll', toggleHeader);
+  window.addEventListener('load', toggleHeader);
+
+  // Overlay del menú
   menuItem.addEventListener('mouseenter', () => overlay.classList.add('active'));
   menuItem.addEventListener('mouseleave', () => overlay.classList.remove('active'));
   overlay.addEventListener('mouseenter', () => overlay.classList.remove('active'));
 });
-
 </script>
 
