@@ -42,60 +42,26 @@ import '../style/global.css';
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   const sectionInicio = document.getElementById('Inicio');
-  const navLinks = document.querySelectorAll('.nav-menu-left a, .nav-menu-right a');
   const menuItem = document.querySelector('.menu-item');
   const overlay = document.getElementById('overlay');
 
-  // Mostrar/ocultar header en sección Inicio
-  function toggleHeaderVisibility() {
-    if (!sectionInicio) return;
-    const rect = sectionInicio.getBoundingClientRect();
-    const isVisible = rect.bottom > 100 && rect.top < window.innerHeight;
-    header.classList.toggle('visible', isVisible);
+  // Header visible según scroll, desaparece antes del 50%
+  if (sectionInicio) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        header.classList.toggle('visible', entry.intersectionRatio > 0.4);
+      },
+      { threshold: Array.from({ length: 101 }, (_, i) => i / 100) } // 0 a 1 en pasos de 0.01
+    );
+
+    observer.observe(sectionInicio);
   }
 
-  // Marcar link activo según scroll
-  function highlightCurrentSection() {
-    const sections = ['Inicio', 'novedades', 'service', 'principios']
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-
-    let currentSectionId = '';
-    sections.forEach(section => {
-      const offset = section.offsetTop;
-      if (window.scrollY >= offset - 120) {
-        currentSectionId = section.id;
-      }
-    });
-
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href')?.replace('#', '');
-      link.classList.toggle('active', href === currentSectionId);
-    });
-  }
-
-  // Mostrar overlay al hacer hover en el menú
-  menuItem.addEventListener('mouseenter', () => {
-    overlay.classList.add('active');
-  });
-
-  menuItem.addEventListener('mouseleave', () => {
-    overlay.classList.remove('active');
-  });
-
-  overlay.addEventListener('mouseenter', () => {
-    overlay.classList.remove('active');
-  });
-
-  window.addEventListener('scroll', () => {
-    toggleHeaderVisibility();
-    highlightCurrentSection();
-  });
-
-  window.addEventListener('load', () => {
-    toggleHeaderVisibility();
-    highlightCurrentSection();
-  });
+  // Overlay del menú al hacer hover
+  menuItem.addEventListener('mouseenter', () => overlay.classList.add('active'));
+  menuItem.addEventListener('mouseleave', () => overlay.classList.remove('active'));
+  overlay.addEventListener('mouseenter', () => overlay.classList.remove('active'));
 });
+
 </script>
 
