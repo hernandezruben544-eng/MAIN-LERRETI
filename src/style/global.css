@@ -147,7 +147,7 @@ html {
   bottom: 100px;
   left: 20px;
   width: 240px;
-  background-color: #000080;
+  background-color: white;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   padding: 1rem;
@@ -159,24 +159,23 @@ html {
 }
 
 .notificacion-img-vertical {
-  width: 150px;
-  height: 100px;
+  width: 100px;
+  height: 80px;
   object-fit: contain;
   border-radius: 20px;
-  background-color: white;
 }
 
 .notificacion-titulo {
   font-size: 1.1rem;
   font-weight: bold;
   text-align: center;
-  color: white;
+  color: #000080;
 }
 
 .notificacion-texto {
   font-size: 0.9rem;
   text-align: center;
-  color: white;
+  color: #000080;
 }
 
 .boton-notificacion {
@@ -188,7 +187,7 @@ html {
   cursor: pointer;
   padding: 0.4rem;
   transition: color 0.3s ease;
-  background-color: white;
+  background-color: #000080;
   border-radius: 12px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -200,7 +199,7 @@ html {
   left: 0;
   height: 100%;
   width: 0%;
-  background-color: rgba(0, 0, 128, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   transition: width 0.4s ease;
   z-index: 0;
 }
@@ -210,15 +209,15 @@ html {
 }
 
 .boton-notificacion:hover {
-  color: #000080;
+  color: white;
 }
 
 .boton-notificacion{
   position: relative;
   z-index: 1;
   overflow: hidden;
-  color: #000080;
-  background-color: white;
+  color: white;
+  background-color: #000080;
 }
 
 .boton-cerrar-notificacion {
