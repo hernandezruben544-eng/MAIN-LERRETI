@@ -54,7 +54,7 @@
 }
 
 .menu-left {
-  left: calc(50% - 530px);
+  left: calc(50% - 540px);
 }
 
 .menu-right {
@@ -135,14 +135,14 @@
   visibility: hidden;
   align-items: center;
   text-align: center;
-  transform: translateX(15px) translateY(50%);
+  transform: translateX(0) translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .menu-item:hover .submenu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(3%);
 }
 
 .submenu li {

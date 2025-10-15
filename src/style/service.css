@@ -94,16 +94,13 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-image: url("/otros/logo.png");
+  background-image: url("/otros/lerreti.jpeg");
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
-
-
-
 
 .icono-circular img {
   width: 80px;
@@ -114,7 +111,6 @@
 .titulo-servicio {
   font-size: 1.3rem;
   font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
   line-height: 1.1;
   margin: 1rem 0 0.5rem;
   color: white;

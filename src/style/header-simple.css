@@ -38,16 +38,44 @@
   object-fit: contain;
 }
 
-/* LINK SIMPLE A LERRETI */
 .header-right .volver-link {
-  color: white;               /* texto blanco por defecto */
-  font-size: 1.1rem;
+  position: relative;
+  display: inline-block;       /* necesario para transform y pseudo-elementos */
+  font-size: 0.9rem;
   font-weight: bold;
   text-decoration: none;
-  transition: color 0.3s ease;
+  color: #000080;
+  background-color: white;   /* azul marino */
+  border: none;
+  border-radius: 12px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  z-index: 1;
   margin-right: 15rem;
 }
 
-.header-right .volver-link:hover {
-  color: rgba(0,0,0,0.2); /* dorado en hover (puedes cambiarlo a azul u otro) */
+/* Efecto de brillo con pseudo-elemento */
+.header-right .volver-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: rgba(0, 0, 255, 0.1);
+  transition: width 0.4s ease;
+  z-index: 0;
 }
+
+.header-right .volver-link:hover::before {
+  width: 100%;
+}
+
+/* Efecto al pasar el cursor */
+.header-right .volver-link:hover {
+  color: #000080;
+  transform: scale(1.08);      /* agrandamiento suave */
+}
+

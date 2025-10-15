@@ -1,6 +1,6 @@
 .BaseHead-profesionalizacion {
     position: relative;
-    background-image: url("/images/profesionalizacion.png");
+    background-image: url("/images/profesionalizacion.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -54,5 +54,5 @@
 }
 
 .BaseHead-profesionalizacion .barra a.active {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
 }
