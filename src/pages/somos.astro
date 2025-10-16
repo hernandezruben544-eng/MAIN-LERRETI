@@ -19,7 +19,7 @@ import Footer from '../components/Footer.astro';
 
     const observer = new IntersectionObserver(
     ([entry]) => {
-        if (entry.intersectionRatio < 0.5) {
+        if (entry.intersectionRatio < 1.0) {
         header.classList.remove('visible'); // Header desaparece cuando menos del 50% de BaseHead está visible
         } else {
         header.classList.add('visible');    // Header visible mientras al menos 50% de BaseHead está visible
