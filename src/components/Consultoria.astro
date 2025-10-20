@@ -1,0 +1,51 @@
+---
+import '../style/consultoria.css';
+import '../style/animaciones.css';
+---
+
+<section class="consultoria">
+  <div class="consultoria-bloque">
+    <h1 class="consultoria-titulo-cuadro aparecer">CONSULTORÍA</h1>
+
+    <div class="consultoria-contenido aparecer">
+      <!-- Columna izquierda -->
+      <div class="consultoria-columna-izquierda">
+        <p class="consultoria-descripcion">
+          Servicios de consultoría principalmente en los siguientes rubros:
+        </p>
+
+        <ul class="consultoria-lista">
+          <li>Informática</li>
+          <li>Redes</li>
+          <li>Contabilidad Gubernamental</li>
+          <li>Presupuesto</li>
+          <li>Administración pública y privada</li>
+          <li>Evaluación al desempeño</li>
+          <li>Gestión para resultados</li>
+          <li>Criterios de política económica</li>
+          <li>Entre otros.</li>
+        </ul>
+      </div>
+
+      <!-- Columna derecha (imagen) -->
+      <div class="consultoria-columna-derecha rebote">
+        <img src="/otros/consultoria.jpeg" alt="Consultoría" class="imagen-derecha" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:client>
+  window.addEventListener('DOMContentLoaded', () => {
+    const elementos = document.querySelectorAll('.aparecer, .rebote');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+  });
+</script>

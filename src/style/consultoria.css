@@ -1,0 +1,126 @@
+.consultoria {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(40px, 8vw, 80px) 20px;
+  box-sizing: border-box;
+}
+
+.consultoria-bloque {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000080;
+  gap: 2rem;
+}
+
+/* === TÍTULO === */
+.consultoria-titulo-cuadro {
+  color: white;
+  background-color: #000080;
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+/* === CONTENEDOR FLEX DE TEXTO + IMAGEN === */
+.consultoria-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* === COLUMNA IZQUIERDA === */
+.consultoria-columna-izquierda {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Descripción */
+.consultoria-descripcion {
+  font-size: 1.7rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Lista con puntos y separación */
+.consultoria-lista {
+  list-style-type: disc;
+  padding-left: 4rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #000080;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* === IMAGEN DERECHA === */
+.consultoria-columna-derecha {
+  flex: 0 0 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-derecha {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+  margin-right: 60px;
+}
+
+.imagen-derecha:hover {
+  transform: scale(1.03);
+}
+
+/* === EFECTO DE APARICIÓN === */
+.aparecer {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.aparecer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .consultoria-contenido {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .consultoria-columna-izquierda {
+    width: 100%;
+  }
+
+  .consultoria-columna-derecha {
+    width: 100%;
+  }
+
+  .consultoria-descripcion,
+  .consultoria-lista {
+    font-size: 1.1rem;
+  }
+
+  .imagen-derecha {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
