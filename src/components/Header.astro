@@ -38,13 +38,15 @@ import '../style/global.css';
 
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   const sectionInicio = document.getElementById('Inicio');
   const menuItem = document.querySelector('.menu-item');
   const overlay = document.getElementById('overlay');
+  const menuLink = menuItem?.querySelector('.menu-link'); // “Nosotros”
+  const submenu = menuItem?.querySelector('.submenu');
 
-  // Header desaparece antes de la mitad de la sección
+  // --- Mostrar/ocultar header según scroll ---
   function toggleHeader() {
     if (!sectionInicio) return;
 
@@ -52,17 +54,43 @@ import '../style/global.css';
     const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
     const visibleRatio = visibleHeight / rect.height;
 
-    // Ajusta 0.6 para decidir cuándo empieza a desaparecer
     header.classList.toggle('visible', visibleRatio > 0.9);
   }
 
   window.addEventListener('scroll', toggleHeader);
   window.addEventListener('load', toggleHeader);
 
-  // Overlay del menú
-  menuItem.addEventListener('mouseenter', () => overlay.classList.add('active'));
-  menuItem.addEventListener('mouseleave', () => overlay.classList.remove('active'));
-  overlay.addEventListener('mouseenter', () => overlay.classList.remove('active'));
+  // --- Submenú con clic ---
+  if (menuItem && menuLink && submenu && overlay) {
+    let submenuOpen = false;
+
+    function openSubmenu() {
+      submenu.classList.add('active');
+      overlay.classList.add('active');
+      menuLink.classList.add('active'); // ✅ resalta "Nosotros"
+      submenuOpen = true;
+    }
+
+    function closeSubmenu() {
+      submenu.classList.remove('active');
+      overlay.classList.remove('active');
+      menuLink.classList.remove('active'); // ✅ quita resaltado
+      submenuOpen = false;
+    }
+
+    // Clic en "Nosotros"
+    menuLink.addEventListener('click', (e) => {
+      e.stopPropagation();
+      submenuOpen ? closeSubmenu() : openSubmenu();
+    });
+
+    // Clic fuera o en overlay → cerrar
+    document.addEventListener('click', (e) => {
+      if (submenuOpen && !menuItem.contains(e.target)) closeSubmenu();
+    });
+
+    overlay.addEventListener('click', closeSubmenu);
+  }
 });
 </script>
 
