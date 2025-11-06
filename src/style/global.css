@@ -119,10 +119,10 @@ html {
   transform: scale(1.1);
 }
 
-.arrow-icon:hover {
-  color: #000080;
+/* 🔹 Aquí está la clave */
+.scroll-top-btn:hover .arrow-icon {
+  color: #000080; /* cambia a dorado o el color que prefieras */
 }
-
 /* Flecha dentro del botón */
 .arrow-icon {
   font-size: 35px;

@@ -58,26 +58,40 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-
 .scroll-top-btn {
   position: fixed;
-  bottom: 30px;
+  bottom: 100px;
   right: 30px;
   width: 50px;
   height: 50px;
-  background-color: #0077ff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none;
+  background: #000080;
+  backdrop-filter: blur(6px);
+  border: 2px solid rgba(0, 0, 128, 0.3);
+  border-radius: 12px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   z-index: 1000;
-  transition: opacity 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(155, 155, 155, 0.2);
 }
 
 .scroll-top-btn:hover {
-  background-color: #005fcc;
+  background: rgba(30, 0, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* 🔹 Aquí está la clave */
+.scroll-top-btn:hover .arrow-icon {
+  color: #000080; /* cambia a dorado o el color que prefieras */
+}
+
+/* Estilo base de la flecha */
+.arrow-icon {
+  font-size: 35px;
+  font-weight: bold;
+  color: white; /* color inicial */
+  line-height: 1;
+  animation: bounce-up 1.5s infinite;
 }
